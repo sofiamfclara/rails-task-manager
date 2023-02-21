@@ -1,8 +1,19 @@
-<h1>Tasks</h1>
-<ul>
-  <% @tasks.each do |t| %>
-    <li><%= link_to t.title, task_path(t) %><%= link_to "🗑", delete_task_path(t), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-</li>
-  <% end %>
-</ul>
-<%= link_to "Add a new task", new_task_path %>
+<div class="container">
+  <div class="display-tasks">
+    <h1 class="pb-3">Tasks</h1>
+    <ul>
+      <% @tasks.each do |t| %>
+        <div class="d-flex">
+          <% if t.completed %>
+            <i class="fa-solid fa-square-check p-2"></i>
+          <% else %>
+            <i class="fa-regular fa-square-check p-2"></i>
+          <% end %>
+          <%= link_to t.title, task_path(t), class: "p-2" %>
+          <%= link_to "🗑", task_path(t), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "ml-auto p-2"%>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to "+ Add a new task", new_task_path %>
+</div>

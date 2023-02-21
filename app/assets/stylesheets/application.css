@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+body {
+  background-image: url("clouds-bg.gif");
+  background-position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.display-tasks {
+  border-bottom: solid lightgrey;
+}

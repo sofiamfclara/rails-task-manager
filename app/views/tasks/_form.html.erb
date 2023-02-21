@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_with model: @task do |t| %>
+    <div class="d-flex flex-column pb-3">
+      <strong><%= t.label :title %></strong>
+      <%= t.text_field :title %>
+    </div><div class="d-flex flex-column pb-3">
+      <strong><%= t.label :details %></strong>
+      <%= t.text_field :details %>
+    </div>
+    <% unless t.object.new_record? %>
+      <div class="d-flex flex-row pb-3">
+        <%= t.check_box :completed %>
+        <% if @task.completed == true %>
+          <%= "This task is completed" %>
+        <% else %>
+          <%= "This task is not yet completed" %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= t.submit %>
+  <% end %>
+</div>

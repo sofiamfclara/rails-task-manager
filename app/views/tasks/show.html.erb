@@ -1,6 +1,26 @@
-<h1><%= @task.title %></h1>
-<p><%= @task.details %></p>
-<p><%= @task.completed %></p>
-<%= link_to "Back to list", tasks_path %>
-<%= link_to "Edit task", edit_task_path %>
-<%= link_to "Delete task", delete_task_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+<div class="container">
+  <div class="d-flex justify-content-between">
+  <h1><%= @task.title %></h1>
+  <%= link_to "Edit task", edit_task_path, class: "btn btn-secondary"%>
+  </div>
+  <p class="alert alert-secondary"><%= @task.details %></p>
+  <% if @task.completed == true %>
+    <% if @task.completed == true %>
+      <i class="fa-solid fa-square-check p-2"></i>
+    <% else %>
+      <i class="fa-regular fa-square-check p-2"></i>
+    <% end %>
+    <%= "This task is completed" %>
+  <% else %>
+    <% if @task.completed == true %>
+      <i class="fa-solid fa-square-check p-2"></i>
+    <% else %>
+      <i class="fa-regular fa-square-check p-2"></i>
+    <% end %>
+    <%= "This task is not yet completed" %>
+  <% end %>
+  <div>
+    <%= link_to "Back to list", tasks_path %>
+    <%= link_to "Delete task", task_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+  </div>
+</div>
